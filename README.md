@@ -51,3 +51,19 @@ Contact: Silas Lobo [silascorreia.lobo@thi.de]
 
 ## License
 InTAS is licensed under **GNU General Public License v3.0**, see [lisence file](https://github.com/silaslobo/InTAS/blob/master/LICENSE) for details.
+
+## Commands and parameters
+
+```xml
+		<summary-output value="InTAS.simulation.summary.xml"/>
+		<tripinfo-output value="InTAS.simulation.tripinfo.xml"/>
+		<statistic-output value="InTAS.simulation.statistic.xml"/>
+		<netstate-dump value="InTAS.simulation.netstate.xml"/>
+```
+
+
+```bash
+/usr/share/sumo/tools/xml/xml2csv.py -o scenario/outputs/random/24h/0_InTAS.simulation.edge.csv scenario/outputs/random/24h/0_InTAS.simulation.edge.xml
+/usr/share/sumo/tools/runSeeds.py -k scenario/InTAS_full_poly_1h.sumocfg --seeds 1:2 --threads 4 -p outputs/random/24h/SEED_
+for i in {10..19}; do for j in 1 5 10 15; do /usr/share/sumo/tools/xml/xml2csv.py -o "scenario/outputs/random/24h/"$i"_InTAS.simulation.edge_"$j"m.csv" "scenario/outputs/random/24h/"$i"_InTAS.simulation.edge_"$j"m.xml"; done; done;
+```
